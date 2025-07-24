@@ -1,19 +1,20 @@
-import { useState } from "react"
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const LikeButton = () => {
+interface props {
+    onClick:()=>void,
+    isLiked :boolean
+}
 
-    const [isLiked, setIsLiked]= useState<boolean>(false)
-
-    const handleClick = () => {
-        setIsLiked(!isLiked)
-    }
+const LikeButton = ({onClick,isLiked}:props) => {
 
     return (
         <>
-            <button onClick={handleClick}>
-                {isLiked?
-                    <p>Like</p>
-                    :<p>NotLiked</p>
+            <button onClick={onClick} className="cursor-pointer w-auto h-auto z-10">
+                {isLiked?                
+                    <FavoriteIcon sx={{color:"red"}}/>
+                   : <FavoriteBorderIcon  sx={{color:"black"}}/>
+                
                 }
             </button>
         </>
